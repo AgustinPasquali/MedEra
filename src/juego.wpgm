@@ -1,0 +1,34 @@
+import wollok.game.*
+import recursos.*
+import personajes.*
+import inicio.*
+
+
+program miPrimerWollokGame {
+	//Titulo
+	game.title("Medieval era!")
+	
+	 // límites del tablero de juego 
+	game.width(26)
+    game.height(18)
+    game.boardGround("assert/OIG2 (1).jpeg")
+	game.addVisual(foto)
+
+  //sonido
+    const audio = game.sound("assert/the-horde-movie-intro-theme.mp3")
+	audio.shouldLoop(true)
+	game.schedule(500, { audio.play()} )
+	keyboard.alt().onPressDo({audio.volume(0) })
+	keyboard.control().onPressDo({audio.volume(0.8) })
+	
+  // iniciar Juego	
+	 keyboard.enter().onPressDo ({
+	 	game.removeVisual(foto)
+	    inicio.iniciar()
+	   
+	 })
+	 
+   // que arranque el juego!
+    game.start()
+    
+}
